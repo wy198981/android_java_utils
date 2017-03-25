@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/mainLayout"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical">
+    <include
+        android:id="@+id/popuWindowContainer"
+        layout="@layout/popu_window"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="30dp"
+        />
+
+    <Button
+        android:id="@+id/btnRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="刷新数据"/>
+
+    <Button
+        android:id="@+id/btnAddEach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="添加一条数据"/>
+
+    <Button
+        android:id="@+id/btnAddList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="添加数据列表"
+        />
+
+
+</LinearLayout>
