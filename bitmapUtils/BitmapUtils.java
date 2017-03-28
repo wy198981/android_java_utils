@@ -64,4 +64,42 @@ public class BitmapUtils
         }
         return BitmapFactory.decodeFile(fileName);
     }
+	
+	/*
+	 将Bitmap原来的图像，按照指定的宽高进行裁剪，然后获取目标的Bitmap图像
+	*/
+	private Bitmap decodeBitmapFormRes(Resources resources, int resId, int targetWidth, int targetHeight)
+    {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.RGB_565;
+        options.inJustDecodeBounds = false;
+        BitmapFactory.decodeResource(resources, resId, options);
+        int inSample = calculateInSample(options, targetWidth, targetHeight);
+        options.inSampleSize = inSample;
+        return BitmapFactory.decodeResource(resources, resId, options);
+    }
+	
+	/*
+		计算缩放的比率
+	*/
+	private int calculateInSample(BitmapFactory.Options options, int targetWidth, int targetHeight)
+    {
+        if (targetWidth <= 0 || targetHeight <= 0)
+        {
+            return 1;
+        }
+        int inSample = 1;
+        final int rawWidth = options.outWidth;
+        final int rawHeight = options.outHeight;
+        if (rawWidth > targetWidth || rawHeight > targetHeight)
+        {
+            final int halfWidth = rawWidth / 2;
+            final int halfHeight = rawHeight / 2;
+            while ((halfWidth / inSample >= targetWidth) && (halfHeight / inSample >= targetHeight))
+            {
+                inSample *= 2;
+            }
+        }
+        return inSample;
+    }
 }
