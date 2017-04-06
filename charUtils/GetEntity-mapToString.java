@@ -83,4 +83,26 @@
 
 //        L.i("stringBuffer.toString():" + stringBuffer.toString());
         return stringBuffer.toString();//
+		
+		/*
+			将byte数据按照指定格式打印
+		*/
+		private String byteToString(byte[] data, String split)
+		{
+			if (data == null) return null;
+			StringBuffer stringBuffer = new StringBuffer();
+
+			for (int i = 0; i < data.length; i++)
+			{
+				String format = String.format("0x%x", data[i]);
+				stringBuffer.append(format);
+
+				if (i != data.length - 1)
+				{
+					stringBuffer.append(split);
+				}
+
+			}
+			return stringBuffer.toString();
+		}
     }

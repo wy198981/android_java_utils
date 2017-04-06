@@ -1,0 +1,1 @@
+对于Base64, android本身就提供相应的工具来支持；android.util.Base64 default的效果和本目录的Base64的效果一样；
